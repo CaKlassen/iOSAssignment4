@@ -14,6 +14,9 @@
 #import "Vector.h"
 #import "Camera.h"
 #import "PlayerPaddle.h"
+#import "EnemyPaddle.h"
+#import "Ball.h"
+#import "Wall.h"
 #import "MathUtils.h"
 
 #import <Box2D/Box2D.h>
@@ -61,6 +64,10 @@ public:
 	CGPoint touchStart;
 	
 	PlayerPaddle *playerPaddle;
+	EnemyPaddle *enemyPaddle;
+	Ball *ball;
+	Wall *wallLeft;
+	Wall *wallRight;
 	
 	b2World *world;
 	CustomContactListener *contactListener;
@@ -70,6 +77,9 @@ public:
 
 
 @implementation GameScene
+
+static const int PADDLE_OFF = 140;
+static const int WALL_OFF = 115;
 
 -(id)init
 {
@@ -87,7 +97,12 @@ public:
 	world->SetContactListener(contactListener);
 	
 	// Create the game objects
-	playerPaddle = [[PlayerPaddle alloc] initWithPosition:GLKVector3Make(0, 0, 0) world:world];
+	wallLeft = [[Wall alloc] initWithPosition:GLKVector3Make(-WALL_OFF, 0, 0) world:world];
+	wallRight = [[Wall alloc] initWithPosition:GLKVector3Make(WALL_OFF, 0, 0) world:world];
+	
+	playerPaddle = [[PlayerPaddle alloc] initWithPosition:GLKVector3Make(0, -PADDLE_OFF, 0) world:world];
+	enemyPaddle = [[EnemyPaddle alloc] initWithPosition:GLKVector3Make(0, PADDLE_OFF, 0) world:world];
+	ball = [[Ball alloc] initWithPosition:GLKVector3Make(0, 0, 0) world:world];
 	
 	return self;
 }
@@ -106,6 +121,8 @@ public:
 	}
 	
 	[playerPaddle update];
+	[enemyPaddle update];
+	[ball update];
 }
 
 -(void)draw
@@ -116,12 +133,35 @@ public:
 	glEnable(GL_BLEND);
 	
 	[playerPaddle draw:spriteProgram camera:camera];
+	[enemyPaddle draw:spriteProgram camera:camera];
+	[ball draw:spriteProgram camera:camera];
 }
 
 
 -(void)pan:(UIPanGestureRecognizer*)recognizer
 {
-	
+	if (recognizer.numberOfTouches == 1)
+	{
+		CGPoint touchLocation = [recognizer locationInView:recognizer.view];
+		
+		if ([recognizer state] == UIGestureRecognizerStateBegan)
+		{
+			touchStart = touchLocation;
+		}
+		else
+		{
+			CGPoint dis;
+			dis.x = (touchLocation.x - touchStart.x) * 8; // Moving
+			
+			touchStart = touchLocation;
+			
+			// Only move if we are inside the correct range
+			float playerX = [playerPaddle position].x;
+			
+			if (playerX <= 50 && playerX >= -50)
+				[playerPaddle updatePosition:GLKVector3Make(dis.x, 0, 0)];
+		}
+	}
 }
 
 
@@ -148,7 +188,7 @@ public:
 	const GLfloat aspectRatio = (GLfloat)(controller.view.bounds.size.width)/(GLfloat)(controller.view.bounds.size.height);
 	const GLfloat fov = GLKMathDegreesToRadians(90.0f);
 	
-	GLKMatrix4 cameraMatrix = GLKMatrix4MakePerspective(fov, aspectRatio, 0.1f, 100.0f);
+	GLKMatrix4 cameraMatrix = GLKMatrix4MakePerspective(fov, aspectRatio, 0.1f, 1000.0f);
 	
 	camera = [[Camera alloc] initWithPerspective:cameraMatrix position:[[Vector3 alloc] initWithValue:0 yPos:0 zPos:0]];
 }

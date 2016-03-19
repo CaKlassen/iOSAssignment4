@@ -1,19 +1,19 @@
 //
-//  PlayerPaddle.h
+//  Ball.h
 //  iOSAssignment2
 //
-//  Created by ChristoferKlassen on 2016-03-17.
+//  Created by ChristoferKlassen on 2016-03-18.
 //  Copyright © 2016 Chris Klassen. All rights reserved.
 //
 
-#ifndef PlayerPaddle_h
-#define PlayerPaddle_h
+#ifndef Ball_h
+#define Ball_h
 
 #import <Box2D/Box2D.h>
 #import "Sprite.h"
 
 
-@interface PlayerPaddle : Sprite
+@interface Ball : Sprite
 
 -(id)initWithPosition:(GLKVector3)position world:(b2World*)world;
 
@@ -21,4 +21,4 @@
 
 @end
 
-#endif /* PlayerPaddle_h */
+#endif /* Ball_h */

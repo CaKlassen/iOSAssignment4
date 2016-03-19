@@ -1,15 +1,15 @@
 //
-//  PlayerPaddle.mm
+//  EnemyPaddle.m
 //  iOSAssignment2
 //
-//  Created by ChristoferKlassen on 2016-03-17.
+//  Created by ChristoferKlassen on 2016-03-19.
 //  Copyright © 2016 Chris Klassen. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "PlayerPaddle.h"
+#import "EnemyPaddle.h"
 
-@interface PlayerPaddle ()
+@interface EnemyPaddle ()
 {
 	b2World* world;
 	b2BodyDef bodyDef;
@@ -19,7 +19,7 @@
 @end
 
 
-@implementation PlayerPaddle
+@implementation EnemyPaddle
 
 static const NSString* FILE_NAME = @"Paddle.png";
 
