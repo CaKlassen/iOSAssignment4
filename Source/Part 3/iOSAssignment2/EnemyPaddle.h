@@ -1,19 +1,19 @@
 //
-//  PlayerPaddle.h
+//  EnemyPaddle.h
 //  iOSAssignment2
 //
-//  Created by ChristoferKlassen on 2016-03-17.
+//  Created by ChristoferKlassen on 2016-03-19.
 //  Copyright © 2016 Chris Klassen. All rights reserved.
 //
 
-#ifndef PlayerPaddle_h
-#define PlayerPaddle_h
+#ifndef EnemyPaddle_h
+#define EnemyPaddle_h
 
-#import <Box2D/Box2D.h>
 #import "Sprite.h"
+#import <Box2D/Box2D.h>
 
 
-@interface PlayerPaddle : Sprite
+@interface EnemyPaddle : Sprite
 
 -(id)initWithPosition:(GLKVector3)position world:(b2World*)world;
 
@@ -21,4 +21,5 @@
 
 @end
 
-#endif /* PlayerPaddle_h */
+
+#endif /* EnemyPaddle_h */

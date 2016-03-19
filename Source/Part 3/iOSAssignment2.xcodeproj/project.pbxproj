@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2219A61B1C9DF2FE008BE5F9 /* EnemyPaddle.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2219A61A1C9DF2FE008BE5F9 /* EnemyPaddle.mm */; };
 		22270DBE1C8CC09200960454 /* MathUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 22270DBD1C8CC09200960454 /* MathUtils.m */; };
 		22372DDF1C77E7770058FF72 /* Sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 22372DDE1C77E7770058FF72 /* Sprite.m */; };
 		22372DE51C77EB470058FF72 /* SpriteProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 22372DE41C77EB470058FF72 /* SpriteProgram.m */; };
@@ -57,6 +58,9 @@
 		226AAB7C1C9C862800833AD5 /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 226AAB4A1C9C862800833AD5 /* b2WeldJoint.cpp */; };
 		226AAB7D1C9C862800833AD5 /* b2WheelJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 226AAB4C1C9C862800833AD5 /* b2WheelJoint.cpp */; };
 		226AAB7E1C9C862800833AD5 /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 226AAB4F1C9C862800833AD5 /* b2Rope.cpp */; };
+		226AAB811C9C9EA500833AD5 /* Ball.mm in Sources */ = {isa = PBXBuildFile; fileRef = 226AAB801C9C9EA500833AD5 /* Ball.mm */; };
+		226AAB831C9C9F2E00833AD5 /* Ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 226AAB821C9C9F2E00833AD5 /* Ball.png */; };
+		226AAB991C9DEE9600833AD5 /* Wall.mm in Sources */ = {isa = PBXBuildFile; fileRef = 226AAB981C9DEE9600833AD5 /* Wall.mm */; };
 		226CC78D1C9BB60000B15A12 /* PlayerPaddle.mm in Sources */ = {isa = PBXBuildFile; fileRef = 226CC78C1C9BB60000B15A12 /* PlayerPaddle.mm */; };
 		226CC78F1C9BB75E00B15A12 /* Paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 226CC78E1C9BB75E00B15A12 /* Paddle.png */; };
 		226CC7921C9BB81300B15A12 /* TextureLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 226CC7911C9BB81300B15A12 /* TextureLoader.m */; };
@@ -79,6 +83,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2219A6191C9DF2D8008BE5F9 /* EnemyPaddle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnemyPaddle.h; sourceTree = "<group>"; };
+		2219A61A1C9DF2FE008BE5F9 /* EnemyPaddle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EnemyPaddle.mm; sourceTree = "<group>"; };
 		22270DBC1C8CC04D00960454 /* MathUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MathUtils.h; sourceTree = "<group>"; };
 		22270DBD1C8CC09200960454 /* MathUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathUtils.m; sourceTree = "<group>"; };
 		22372DDD1C77E7410058FF72 /* Sprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
@@ -179,6 +185,11 @@
 		226AAB4D1C9C862800833AD5 /* b2WheelJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2WheelJoint.h; sourceTree = "<group>"; };
 		226AAB4F1C9C862800833AD5 /* b2Rope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Rope.cpp; sourceTree = "<group>"; };
 		226AAB501C9C862800833AD5 /* b2Rope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2Rope.h; sourceTree = "<group>"; };
+		226AAB7F1C9C9E8F00833AD5 /* Ball.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
+		226AAB801C9C9EA500833AD5 /* Ball.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ball.mm; sourceTree = "<group>"; };
+		226AAB821C9C9F2E00833AD5 /* Ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ball.png; sourceTree = "<group>"; };
+		226AAB971C9DEE3500833AD5 /* Wall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
+		226AAB981C9DEE9600833AD5 /* Wall.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Wall.mm; sourceTree = "<group>"; };
 		226CC78B1C9BB54900B15A12 /* PlayerPaddle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerPaddle.h; sourceTree = "<group>"; };
 		226CC78C1C9BB60000B15A12 /* PlayerPaddle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerPaddle.mm; sourceTree = "<group>"; };
 		226CC78E1C9BB75E00B15A12 /* Paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Paddle.png; sourceTree = "<group>"; };
@@ -446,6 +457,12 @@
 				22372DDE1C77E7770058FF72 /* Sprite.m */,
 				226CC78B1C9BB54900B15A12 /* PlayerPaddle.h */,
 				226CC78C1C9BB60000B15A12 /* PlayerPaddle.mm */,
+				226AAB7F1C9C9E8F00833AD5 /* Ball.h */,
+				226AAB801C9C9EA500833AD5 /* Ball.mm */,
+				226AAB971C9DEE3500833AD5 /* Wall.h */,
+				226AAB981C9DEE9600833AD5 /* Wall.mm */,
+				2219A6191C9DF2D8008BE5F9 /* EnemyPaddle.h */,
+				2219A61A1C9DF2FE008BE5F9 /* EnemyPaddle.mm */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -488,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				226CC78E1C9BB75E00B15A12 /* Paddle.png */,
+				226AAB821C9C9F2E00833AD5 /* Ball.png */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -556,6 +574,7 @@
 				22B0EEDF1C6C33BC00B2FA35 /* Assets.xcassets in Resources */,
 				22B0EEE21C6C33BC00B2FA35 /* LaunchScreen.storyboard in Resources */,
 				22372DE71C77EB920058FF72 /* SpriteShader.fsh in Resources */,
+				226AAB831C9C9F2E00833AD5 /* Ball.png in Resources */,
 				22B0EED51C6C33BC00B2FA35 /* BasicShader.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,6 +612,7 @@
 				226AAB581C9C862800833AD5 /* b2TimeOfImpact.cpp in Sources */,
 				226AAB7C1C9C862800833AD5 /* b2WeldJoint.cpp in Sources */,
 				226AAB5F1C9C862800833AD5 /* b2Math.cpp in Sources */,
+				226AAB811C9C9EA500833AD5 /* Ball.mm in Sources */,
 				226AAB561C9C862800833AD5 /* b2Distance.cpp in Sources */,
 				22B0EEDA1C6C33BC00B2FA35 /* GameViewController.m in Sources */,
 				226AAB551C9C862800833AD5 /* b2Collision.cpp in Sources */,
@@ -615,6 +635,8 @@
 				22270DBE1C8CC09200960454 /* MathUtils.m in Sources */,
 				226AAB7A1C9C862800833AD5 /* b2RevoluteJoint.cpp in Sources */,
 				226AAB591C9C862800833AD5 /* b2ChainShape.cpp in Sources */,
+				226AAB991C9DEE9600833AD5 /* Wall.mm in Sources */,
+				2219A61B1C9DF2FE008BE5F9 /* EnemyPaddle.mm in Sources */,
 				226AAB741C9C862800833AD5 /* b2GearJoint.cpp in Sources */,
 				226CC78D1C9BB60000B15A12 /* PlayerPaddle.mm in Sources */,
 				22D10CED1C6EACF3005E7F8C /* Model.m in Sources */,

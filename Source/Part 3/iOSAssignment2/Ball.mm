@@ -1,15 +1,15 @@
 //
-//  PlayerPaddle.mm
+//  Ball.m
 //  iOSAssignment2
 //
-//  Created by ChristoferKlassen on 2016-03-17.
+//  Created by ChristoferKlassen on 2016-03-18.
 //  Copyright © 2016 Chris Klassen. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "PlayerPaddle.h"
+#import "Ball.h"
 
-@interface PlayerPaddle ()
+@interface Ball ()
 {
 	b2World* world;
 	b2BodyDef bodyDef;
@@ -19,10 +19,10 @@
 @end
 
 
-@implementation PlayerPaddle
+@implementation Ball
 
-static const NSString* FILE_NAME = @"Paddle.png";
-
+static const NSString* FILE_NAME = @"Ball.png";
+static const int BALL_SPEED = -80;
 
 -(id)initWithPosition:(GLKVector3)position world:(b2World *)physicsWorld;
 {
@@ -32,19 +32,27 @@ static const NSString* FILE_NAME = @"Paddle.png";
 	world = physicsWorld;
 	
 	// Create physics object
-	bodyDef.type = b2_kinematicBody;
+	bodyDef.type = b2_dynamicBody;
 	bodyDef.position.Set(position.x, position.y);
+	bodyDef.linearDamping = 0.0f;
 	body = world->CreateBody(&bodyDef);
 	
 	// Create physics fixture
-	b2PolygonShape boundingShape;
-	boundingShape.SetAsBox(48, 16);
+	b2CircleShape boundingShape;
+	boundingShape.m_p.Set(0, 0);
+	boundingShape.m_radius = 16;
 	b2FixtureDef fixture;
 	fixture.shape = &boundingShape;
 	fixture.density = 1.0f;
-	fixture.friction = 0.0f;
+	fixture.friction = 0;
 	fixture.restitution = 1.0f;
 	body->CreateFixture(&fixture);
+	
+	// Initial behaviour
+	float xComp = arc4random_uniform(2) == 0 ? -1 : 1;
+	xComp *= 40;
+	b2Vec2 *startImpulse = new b2Vec2(xComp, BALL_SPEED);
+	body->SetLinearVelocity(*startImpulse);
 	
 	return self;
 }
@@ -53,13 +61,6 @@ static const NSString* FILE_NAME = @"Paddle.png";
 {
 	b2Vec2 pos = body->GetPosition();
 	self.position = GLKVector3Make(pos.x, pos.y, 0);
-	
-	// If we are outside the correct range, reverse x velocity
-	if (pos.x > 50 || pos.x < -50)
-	{
-		b2Vec2 spd = body->GetLinearVelocity();
-		[self updatePosition:GLKVector3Make(-spd.x, 0, 0)];
-	}
 }
 
 

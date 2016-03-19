@@ -26,7 +26,7 @@
 	
 	// Set up eye vector and rotation
 	self.rotation = [[Vector3 alloc] initWithValue:0 yPos:0 zPos:0];
-	self.lookAt = [[Vector3 alloc] initWithValue:0 yPos:0 zPos:-10];
+	self.lookAt = [[Vector3 alloc] initWithValue:0 yPos:0 zPos:-1];
 	
 	// Set the position
 	[self makePosition:pos];
