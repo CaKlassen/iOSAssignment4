@@ -10,12 +10,13 @@
 #define EnemyPaddle_h
 
 #import "Sprite.h"
+#import "Ball.h"
 #import <Box2D/Box2D.h>
 
 
 @interface EnemyPaddle : Sprite
 
--(id)initWithPosition:(GLKVector3)position world:(b2World*)world;
+-(id)initWithPosition:(GLKVector3)position world:(b2World*)world ball:(Ball*)ball;
 
 -(void)updatePosition:(GLKVector3)position;
 

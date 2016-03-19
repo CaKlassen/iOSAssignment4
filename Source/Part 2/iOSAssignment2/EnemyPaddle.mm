@@ -14,6 +14,8 @@
 	b2World* world;
 	b2BodyDef bodyDef;
 	b2Body *body;
+	
+	Ball *ball;
 }
 
 @end
@@ -22,9 +24,10 @@
 @implementation EnemyPaddle
 
 static const NSString* FILE_NAME = @"Paddle.png";
+static const float MAX_MOVE_SPEED = 20.0f;
+static const int BUFFER = 32;
 
-
--(id)initWithPosition:(GLKVector3)position world:(b2World *)physicsWorld;
+-(id)initWithPosition:(GLKVector3)position world:(b2World *)physicsWorld ball:(Ball *)gameBall;
 {
 	self = [super initWithTextureFile:FILE_NAME];
 	
@@ -46,6 +49,8 @@ static const NSString* FILE_NAME = @"Paddle.png";
 	fixture.restitution = 1.0f;
 	body->CreateFixture(&fixture);
 	
+	ball = gameBall;
+	
 	return self;
 }
 
@@ -53,6 +58,19 @@ static const NSString* FILE_NAME = @"Paddle.png";
 {
 	b2Vec2 pos = body->GetPosition();
 	self.position = GLKVector3Make(pos.x, pos.y, 0);
+	
+	// Try to follow the ball
+	if ([ball position].x > pos.x + BUFFER)
+	{
+		b2Vec2 *spd = new b2Vec2(MAX_MOVE_SPEED, 0);
+		[self updatePosition:GLKVector3Make(spd->x, 0, 0)];
+	}
+	else if ([ball position].x < pos.x - BUFFER)
+	{
+		b2Vec2 *spd = new b2Vec2(-MAX_MOVE_SPEED, 0);
+		[self updatePosition:GLKVector3Make(spd->x, 0, 0)];
+	}
+		
 	
 	// If we are outside the correct range, reverse x velocity
 	if (pos.x > 50 || pos.x < -50)

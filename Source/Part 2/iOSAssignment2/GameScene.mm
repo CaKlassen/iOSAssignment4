@@ -101,8 +101,8 @@ static const int WALL_OFF = 115;
 	wallRight = [[Wall alloc] initWithPosition:GLKVector3Make(WALL_OFF, 0, 0) world:world];
 	
 	playerPaddle = [[PlayerPaddle alloc] initWithPosition:GLKVector3Make(0, -PADDLE_OFF, 0) world:world];
-	enemyPaddle = [[EnemyPaddle alloc] initWithPosition:GLKVector3Make(0, PADDLE_OFF, 0) world:world];
 	ball = [[Ball alloc] initWithPosition:GLKVector3Make(0, 0, 0) world:world];
+	enemyPaddle = [[EnemyPaddle alloc] initWithPosition:GLKVector3Make(0, PADDLE_OFF, 0) world:world ball:ball];
 	
 	return self;
 }

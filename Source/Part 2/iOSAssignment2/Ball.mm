@@ -22,7 +22,9 @@
 @implementation Ball
 
 static const NSString* FILE_NAME = @"Ball.png";
-static const int BALL_SPEED = -80;
+static const int BALL_SPEED = -120;
+static const int OUTSIDE_OFF = 240;
+
 
 -(id)initWithPosition:(GLKVector3)position world:(b2World *)physicsWorld;
 {
@@ -51,8 +53,8 @@ static const int BALL_SPEED = -80;
 	// Initial behaviour
 	float xComp = arc4random_uniform(2) == 0 ? -1 : 1;
 	xComp *= 40;
-	b2Vec2 *startImpulse = new b2Vec2(xComp, BALL_SPEED);
-	body->SetLinearVelocity(*startImpulse);
+	b2Vec2 startImpulse(xComp, BALL_SPEED);
+	body->SetLinearVelocity(startImpulse);
 	
 	return self;
 }
@@ -61,6 +63,21 @@ static const int BALL_SPEED = -80;
 {
 	b2Vec2 pos = body->GetPosition();
 	self.position = GLKVector3Make(pos.x, pos.y, 0);
+	
+	// Check to see if the ball is outside the view
+	if (pos.y < -OUTSIDE_OFF || pos.y > OUTSIDE_OFF)
+		[self reset];
+}
+
+-(void)reset
+{
+	b2Vec2 newPos(0, 0);
+	body->SetTransform(newPos, 0);
+	
+	float xComp = arc4random_uniform(2) == 0 ? -1 : 1;
+	xComp *= 40;
+	b2Vec2 startImpulse(xComp, BALL_SPEED);
+	body->SetLinearVelocity(startImpulse);
 }
 
 
