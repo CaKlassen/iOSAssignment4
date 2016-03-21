@@ -21,13 +21,14 @@
 
 @implementation Ball
 
-static const NSString* FILE_NAME = @"Ball.png";
+static const NSString* FILE_NAME = @"Ball2.png";
 static const int BALL_SPEED = -80;
 
 -(id)initWithPosition:(GLKVector3)position world:(b2World *)physicsWorld;
 {
 	self = [super initWithTextureFile:FILE_NAME];
 	
+    _launched = false;
 	self.position = position;
 	world = physicsWorld;
 	
@@ -40,7 +41,7 @@ static const int BALL_SPEED = -80;
 	// Create physics fixture
 	b2CircleShape boundingShape;
 	boundingShape.m_p.Set(0, 0);
-	boundingShape.m_radius = 16;
+	boundingShape.m_radius = 10;
 	b2FixtureDef fixture;
 	fixture.shape = &boundingShape;
 	fixture.density = 1.0f;
@@ -48,13 +49,20 @@ static const int BALL_SPEED = -80;
 	fixture.restitution = 1.0f;
 	body->CreateFixture(&fixture);
 	
-	// Initial behaviour
-	float xComp = arc4random_uniform(2) == 0 ? -1 : 1;
-	xComp *= 40;
-	b2Vec2 *startImpulse = new b2Vec2(xComp, BALL_SPEED);
-	body->SetLinearVelocity(*startImpulse);
+
 	
 	return self;
+}
+
+-(void)launchBall
+{
+    // Initial behaviour
+    float xComp = arc4random_uniform(2) == 0 ? -1 : 1;
+    xComp *= 40;
+    b2Vec2 *startImpulse = new b2Vec2(xComp, BALL_SPEED);
+    body->SetLinearVelocity(*startImpulse);
+    
+    _launched = true;
 }
 
 -(void)update
