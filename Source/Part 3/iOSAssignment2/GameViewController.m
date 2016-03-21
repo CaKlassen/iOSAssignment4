@@ -72,6 +72,11 @@ static GameViewController *instance;
 	[tapRecognizer setNumberOfTouchesRequired:1];
 	[self.view addGestureRecognizer:tapRecognizer];
 	
+    UITapGestureRecognizer *singleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapForm:)];
+    [singleTapRecognizer setNumberOfTapsRequired:1];
+    [singleTapRecognizer setNumberOfTouchesRequired:1];
+    [self.view addGestureRecognizer:singleTapRecognizer];
+    
 	UITapGestureRecognizer *tap2Recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapTwoFingersFrom:)];
 	[tap2Recognizer setNumberOfTapsRequired:2];
 	[tap2Recognizer setNumberOfTouchesRequired:2];
@@ -105,6 +110,11 @@ static GameViewController *instance;
 -(void)handlePinchFrom:(UIPinchGestureRecognizer*)recognizer
 {
 	[self.scene pinch:recognizer];
+}
+
+-(void)handleTapForm: (UITapGestureRecognizer*)recogrnizer
+{
+    [self.scene tap:recogrnizer];
 }
 
 -(void)handleDoubleTapFrom:(UITapGestureRecognizer*)recognizer

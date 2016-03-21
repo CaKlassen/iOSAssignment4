@@ -1,28 +1,25 @@
 //
-//  Ball.h
+//  Brick.hpp
 //  iOSAssignment2
 //
-//  Created by ChristoferKlassen on 2016-03-18.
+//  Created by Alexandra Kabak on 2016-03-20.
 //  Copyright © 2016 Chris Klassen. All rights reserved.
 //
 
-#ifndef Ball_h
-#define Ball_h
+#ifndef Brick_h
+#define Brick_h
 
+#include <stdio.h>
 #import <Box2D/Box2D.h>
 #import "Sprite.h"
 
-
-@interface Ball : Sprite
+@interface Brick : Sprite
 
 -(id)initWithPosition:(GLKVector3)position world:(b2World*)world;
-
 -(void)updatePosition:(GLKVector3)position;
 
--(void)launchBall;
-
-@property (assign) bool launched;
+@property (assign) bool alive;
 
 @end
 
-#endif /* Ball_h */
+#endif /* Brick_hpp */

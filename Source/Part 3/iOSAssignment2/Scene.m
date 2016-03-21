@@ -32,6 +32,11 @@
 	
 }
 
+-(void)tap:(UITapGestureRecognizer *)recognizer
+{
+    
+}
+
 -(void)doubleTap:(UITapGestureRecognizer*)recognizer
 {
 	

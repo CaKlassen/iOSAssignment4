@@ -80,6 +80,9 @@
 		22D10D1B1C6EB6DC005E7F8C /* BasicProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D10D1A1C6EB6DC005E7F8C /* BasicProgram.m */; };
 		22D10D251C6EDABC005E7F8C /* Vector.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D10D241C6EDABC005E7F8C /* Vector.m */; };
 		22D10D281C6EE2E1005E7F8C /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D10D271C6EE2E1005E7F8C /* Camera.m */; };
+		ACE4DEE01C9F625500BC7433 /* Brick.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE4DEDF1C9F625500BC7433 /* Brick.png */; };
+		ACE4DEE31C9F62C300BC7433 /* Brick.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACE4DEE11C9F62C300BC7433 /* Brick.mm */; };
+		ACE4DEE51C9F851500BC7433 /* Ball2.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE4DEE41C9F851500BC7433 /* Ball2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -223,6 +226,10 @@
 		22D10D241C6EDABC005E7F8C /* Vector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector.m; sourceTree = "<group>"; };
 		22D10D261C6EE141005E7F8C /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		22D10D271C6EE2E1005E7F8C /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
+		ACE4DEDF1C9F625500BC7433 /* Brick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Brick.png; sourceTree = "<group>"; };
+		ACE4DEE11C9F62C300BC7433 /* Brick.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Brick.mm; sourceTree = "<group>"; };
+		ACE4DEE21C9F62C300BC7433 /* Brick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brick.h; sourceTree = "<group>"; };
+		ACE4DEE41C9F851500BC7433 /* Ball2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ball2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +470,8 @@
 				226AAB981C9DEE9600833AD5 /* Wall.mm */,
 				2219A6191C9DF2D8008BE5F9 /* EnemyPaddle.h */,
 				2219A61A1C9DF2FE008BE5F9 /* EnemyPaddle.mm */,
+				ACE4DEE21C9F62C300BC7433 /* Brick.h */,
+				ACE4DEE11C9F62C300BC7433 /* Brick.mm */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -504,6 +513,8 @@
 		22D10D1C1C6ED453005E7F8C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				ACE4DEE41C9F851500BC7433 /* Ball2.png */,
+				ACE4DEDF1C9F625500BC7433 /* Brick.png */,
 				226CC78E1C9BB75E00B15A12 /* Paddle.png */,
 				226AAB821C9C9F2E00833AD5 /* Ball.png */,
 			);
@@ -568,6 +579,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE4DEE01C9F625500BC7433 /* Brick.png in Resources */,
+				ACE4DEE51C9F851500BC7433 /* Ball2.png in Resources */,
 				226CC78F1C9BB75E00B15A12 /* Paddle.png in Resources */,
 				22B0EEDD1C6C33BC00B2FA35 /* Main.storyboard in Resources */,
 				22B0EED71C6C33BC00B2FA35 /* BasicShader.vsh in Resources */,
@@ -625,6 +638,7 @@
 				226AAB6B1C9C862800833AD5 /* b2CircleContact.cpp in Sources */,
 				226AAB5C1C9C862800833AD5 /* b2PolygonShape.cpp in Sources */,
 				226AAB7E1C9C862800833AD5 /* b2Rope.cpp in Sources */,
+				ACE4DEE31C9F62C300BC7433 /* Brick.mm in Sources */,
 				22D10CF11C6EB147005E7F8C /* Program.m in Sources */,
 				226AAB771C9C862800833AD5 /* b2MouseJoint.cpp in Sources */,
 				226AAB6A1C9C862800833AD5 /* b2ChainAndPolygonContact.cpp in Sources */,

@@ -17,6 +17,7 @@
 #import "EnemyPaddle.h"
 #import "Ball.h"
 #import "Wall.h"
+#import "Brick.h"
 #import "MathUtils.h"
 
 #import <Box2D/Box2D.h>
@@ -64,10 +65,11 @@ public:
 	CGPoint touchStart;
 	
 	PlayerPaddle *playerPaddle;
-	EnemyPaddle *enemyPaddle;
+	//EnemyPaddle *enemyPaddle;
 	Ball *ball;
 	Wall *wallLeft;
 	Wall *wallRight;
+    NSMutableArray *bricks;
 	
 	b2World *world;
 	CustomContactListener *contactListener;
@@ -80,6 +82,8 @@ public:
 
 static const int PADDLE_OFF = 140;
 static const int WALL_OFF = 115;
+static const int BRICK_W = 68;
+static const int BRICK_H = 22;
 
 -(id)init
 {
@@ -101,8 +105,9 @@ static const int WALL_OFF = 115;
 	wallRight = [[Wall alloc] initWithPosition:GLKVector3Make(WALL_OFF, 0, 0) world:world];
 	
 	playerPaddle = [[PlayerPaddle alloc] initWithPosition:GLKVector3Make(0, -PADDLE_OFF, 0) world:world];
-	enemyPaddle = [[EnemyPaddle alloc] initWithPosition:GLKVector3Make(0, PADDLE_OFF, 0) world:world];
-	ball = [[Ball alloc] initWithPosition:GLKVector3Make(0, 0, 0) world:world];
+	//enemyPaddle = [[EnemyPaddle alloc] initWithPosition:GLKVector3Make(0, PADDLE_OFF, 0) world:world];
+	ball = [[Ball alloc] initWithPosition:GLKVector3Make(0, -PADDLE_OFF + 34, 0) world:world];
+    [self setupBricks];
 	
 	return self;
 }
@@ -121,7 +126,7 @@ static const int WALL_OFF = 115;
 	}
 	
 	[playerPaddle update];
-	[enemyPaddle update];
+	//[enemyPaddle update];
 	[ball update];
 }
 
@@ -133,8 +138,13 @@ static const int WALL_OFF = 115;
 	glEnable(GL_BLEND);
 	
 	[playerPaddle draw:spriteProgram camera:camera];
-	[enemyPaddle draw:spriteProgram camera:camera];
+	//[enemyPaddle draw:spriteProgram camera:camera];
 	[ball draw:spriteProgram camera:camera];
+    
+    for(Brick *b in bricks)
+    {
+        [b draw:spriteProgram camera:camera];
+    }
 }
 
 
@@ -164,6 +174,13 @@ static const int WALL_OFF = 115;
 	}
 }
 
+-(void)tap:(UITapGestureRecognizer *)recognizer
+{
+    if(![ball launched])
+    {
+        [ball launchBall];
+    }
+}
 
 -(void)doubleTap:(UITapGestureRecognizer*)recognizer
 {
@@ -191,6 +208,25 @@ static const int WALL_OFF = 115;
 	GLKMatrix4 cameraMatrix = GLKMatrix4MakePerspective(fov, aspectRatio, 0.1f, 1000.0f);
 	
 	camera = [[Camera alloc] initWithPerspective:cameraMatrix position:[[Vector3 alloc] initWithValue:0 yPos:0 zPos:0]];
+}
+
+-(void)setupBricks
+{
+    bricks = [NSMutableArray new];
+    //row 1
+    [bricks insertObject:[[Brick alloc] initWithPosition:GLKVector3Make(-BRICK_W -5, 160, 0) world:world] atIndex:0];
+    [bricks insertObject:[[Brick alloc] initWithPosition:GLKVector3Make(0, 160, 0) world:world] atIndex:1];
+    [bricks insertObject:[[Brick alloc] initWithPosition:GLKVector3Make(BRICK_W + 5, 160, 0) world:world] atIndex:2];
+    
+    //row 2
+    [bricks insertObject:[[Brick alloc] initWithPosition:GLKVector3Make(-BRICK_W -5, 160 - BRICK_H - 5, 0) world:world] atIndex:3];
+    [bricks insertObject:[[Brick alloc] initWithPosition:GLKVector3Make(0, 160 - BRICK_H - 5, 0) world:world] atIndex:4];
+    [bricks insertObject:[[Brick alloc] initWithPosition:GLKVector3Make(BRICK_W + 5, 160 - BRICK_H - 5, 0) world:world] atIndex:5];
+    
+    //row 3
+    [bricks insertObject:[[Brick alloc] initWithPosition:GLKVector3Make(-BRICK_W -5, 160 - BRICK_H * 2 - 10, 0) world:world] atIndex:6];
+    [bricks insertObject:[[Brick alloc] initWithPosition:GLKVector3Make(0, 160 - BRICK_H * 2 - 10, 0) world:world] atIndex:7];
+    [bricks insertObject:[[Brick alloc] initWithPosition:GLKVector3Make(BRICK_W + 5, 160 - BRICK_H * 2 - 10, 0) world:world] atIndex:8];
 }
 
 @end
