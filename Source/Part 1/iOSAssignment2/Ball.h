@@ -17,6 +17,7 @@
 
 -(id)initWithPosition:(GLKVector3)position world:(btDiscreteDynamicsWorld*)world;
 
+-(void)wake;
 -(void)updatePosition:(GLKVector3)position;
 
 @end

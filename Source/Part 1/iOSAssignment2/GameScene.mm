@@ -15,6 +15,7 @@
 #import "Camera.h"
 #import "Ground.h"
 #import "Ball.h"
+#import "Box.h"
 #import "MathUtils.h"
 
 #import "btBulletDynamicsCommon.h"
@@ -35,6 +36,7 @@ const int NUM_POS_ITERATIONS = 3;
 	
 	Ground *ground;
 	Ball *ball;
+	Box *box;
 	
 	btBroadphaseInterface *broadphase;
 	btDefaultCollisionConfiguration *collisionConfig;
@@ -71,8 +73,9 @@ static const int WALL_OFF = 115;
 	dynamicsWorld->setGravity(btVector3(0, 0, 0));
 	
 	// Create the game objects
-	ground = [[Ground alloc] initWithPosition:GLKVector3Make(0, 0, 0) world:dynamicsWorld];
-	ball = [[Ball alloc] initWithPosition:GLKVector3Make(0, 0, 0) world:dynamicsWorld];
+	ground = [[Ground alloc] initWithPosition:GLKVector3Make(0, -100, 0) world:dynamicsWorld];
+	ball = [[Ball alloc] initWithPosition:GLKVector3Make(0, 50, 0) world:dynamicsWorld];
+	box = [[Box alloc] initWithPosition:GLKVector3Make(70, -120, 0) world:dynamicsWorld];
 	
 	return self;
 }
@@ -80,7 +83,10 @@ static const int WALL_OFF = 115;
 -(void)update:(float)elapsedTime
 {
 	[ball update];
+	[ground update];
+	[box update];
 	
+	dynamicsWorld->stepSimulation(1 / 60.0f, 10);
 }
 
 -(void)draw
@@ -92,7 +98,7 @@ static const int WALL_OFF = 115;
 	
 	[ball draw:spriteProgram camera:camera];
 	[ground draw:spriteProgram camera:camera];
-	
+	[box draw:spriteProgram camera:camera];
 }
 
 
@@ -109,9 +115,11 @@ static const int WALL_OFF = 115;
 		else
 		{
 			CGPoint dis;
-			dis.x = (touchLocation.x - touchStart.x) * 8; // Moving
+			dis.x = (touchLocation.x - touchStart.x) / 100; // Rotating
 			
 			touchStart = touchLocation;
+			
+			[ground rotate:-dis.x];
 		}
 	}
 }
@@ -119,7 +127,7 @@ static const int WALL_OFF = 115;
 
 -(void)doubleTap:(UITapGestureRecognizer*)recognizer
 {
-	
+	[ball wake];
 }
 
 -(void)doubleTapTwoFingers:(UITapGestureRecognizer*)recognizer

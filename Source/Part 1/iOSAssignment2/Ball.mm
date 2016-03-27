@@ -12,6 +12,9 @@
 @interface Ball ()
 {
 	btDiscreteDynamicsWorld* world;
+	btCollisionShape *shape;
+	btDefaultMotionState *motionState;
+	btRigidBody *rigidBody;
 }
 
 @end
@@ -31,12 +34,29 @@ static const int OUTSIDE_OFF = 240;
 	self.position = position;
 	world = physicsWorld;
 	
+	
+	// Create the rigid body
+	shape = new btSphereShape(8);
+	motionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(position.x, position.y, position.z)));
+	btScalar mass = 1;
+	btVector3 fallInertia(0, 0, 0);
+	shape->calculateLocalInertia(mass, fallInertia);
+	btRigidBody::btRigidBodyConstructionInfo rigidBodyCI(mass, motionState, shape, fallInertia);
+	rigidBody = new btRigidBody(rigidBodyCI);
+	rigidBody->setGravity(btVector3(0, 0, 0));
+	
+	// Add the rigid body to the game world
+	physicsWorld->addRigidBody(rigidBody);
+	
 	return self;
 }
 
 -(void)update
 {
-
+	btTransform trans;
+	rigidBody->getMotionState()->getWorldTransform(trans);
+	
+	self.position = GLKVector3Make(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ());
 }
 
 -(void)reset
@@ -44,6 +64,10 @@ static const int OUTSIDE_OFF = 240;
 
 }
 
+-(void)wake
+{
+	rigidBody->setGravity(btVector3(0, -100, 0));
+}
 
 -(void)updatePosition:(GLKVector3)speed
 {
@@ -56,6 +80,15 @@ static const int OUTSIDE_OFF = 240;
 	GLKMatrix4 modelMatrix = GLKMatrix4Identity;
 	modelMatrix = GLKMatrix4Translate(modelMatrix, 0, 0, -200);
 	modelMatrix = GLKMatrix4Translate(modelMatrix, self.position.x, self.position.y, self.position.z);
+	
+	btTransform trans;
+	rigidBody->getMotionState()->getWorldTransform(trans);
+	
+	btQuaternion quat = trans.getRotation();
+	btScalar rot = quat.getZ();
+	
+	modelMatrix = GLKMatrix4RotateZ(modelMatrix, rot);
+	
 	
 	_normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelMatrix), NULL);
 	
