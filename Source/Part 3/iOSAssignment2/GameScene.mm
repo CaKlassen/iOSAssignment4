@@ -173,7 +173,7 @@ static const int BRICK_H = 22;
         }
     }
     
-    if(ball.position.y < playerPaddle.position.y - 40)
+    if(ball.position.y < playerPaddle.position.y - 40 || bricks.count == 0)
     {
         //game over
         [self GameOver];
