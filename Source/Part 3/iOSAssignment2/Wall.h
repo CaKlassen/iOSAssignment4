@@ -15,7 +15,7 @@
 
 @interface Wall : Entity
 
--(id)initWithPosition:(GLKVector3) pos world:(b2World*)world;
+-(id)initWithPosition:(GLKVector3) pos world:(b2World*)world top:(bool) top;
 
 @end
 

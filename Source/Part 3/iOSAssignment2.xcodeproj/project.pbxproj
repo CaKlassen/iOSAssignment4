@@ -83,6 +83,8 @@
 		ACE4DEE01C9F625500BC7433 /* Brick.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE4DEDF1C9F625500BC7433 /* Brick.png */; };
 		ACE4DEE31C9F62C300BC7433 /* Brick.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACE4DEE11C9F62C300BC7433 /* Brick.mm */; };
 		ACE4DEE51C9F851500BC7433 /* Ball2.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE4DEE41C9F851500BC7433 /* Ball2.png */; };
+		ACE4DEE71CA8ABFA00BC7433 /* Game Over.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE4DEE61CA8ABFA00BC7433 /* Game Over.png */; };
+		ACE4DEE91CA8AC4600BC7433 /* Overlay.mm in Sources */ = {isa = PBXBuildFile; fileRef = ACE4DEE81CA8AC4600BC7433 /* Overlay.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -230,6 +232,9 @@
 		ACE4DEE11C9F62C300BC7433 /* Brick.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Brick.mm; sourceTree = "<group>"; };
 		ACE4DEE21C9F62C300BC7433 /* Brick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brick.h; sourceTree = "<group>"; };
 		ACE4DEE41C9F851500BC7433 /* Ball2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ball2.png; sourceTree = "<group>"; };
+		ACE4DEE61CA8ABFA00BC7433 /* Game Over.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Game Over.png"; sourceTree = "<group>"; };
+		ACE4DEE81CA8AC4600BC7433 /* Overlay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Overlay.mm; sourceTree = "<group>"; };
+		ACE4DEEA1CA8AC6900BC7433 /* Overlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Overlay.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -472,6 +477,8 @@
 				2219A61A1C9DF2FE008BE5F9 /* EnemyPaddle.mm */,
 				ACE4DEE21C9F62C300BC7433 /* Brick.h */,
 				ACE4DEE11C9F62C300BC7433 /* Brick.mm */,
+				ACE4DEEA1CA8AC6900BC7433 /* Overlay.h */,
+				ACE4DEE81CA8AC4600BC7433 /* Overlay.mm */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -513,6 +520,7 @@
 		22D10D1C1C6ED453005E7F8C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				ACE4DEE61CA8ABFA00BC7433 /* Game Over.png */,
 				ACE4DEE41C9F851500BC7433 /* Ball2.png */,
 				ACE4DEDF1C9F625500BC7433 /* Brick.png */,
 				226CC78E1C9BB75E00B15A12 /* Paddle.png */,
@@ -586,6 +594,7 @@
 				22B0EED71C6C33BC00B2FA35 /* BasicShader.vsh in Resources */,
 				22B0EEDF1C6C33BC00B2FA35 /* Assets.xcassets in Resources */,
 				22B0EEE21C6C33BC00B2FA35 /* LaunchScreen.storyboard in Resources */,
+				ACE4DEE71CA8ABFA00BC7433 /* Game Over.png in Resources */,
 				22372DE71C77EB920058FF72 /* SpriteShader.fsh in Resources */,
 				226AAB831C9C9F2E00833AD5 /* Ball.png in Resources */,
 				22B0EED51C6C33BC00B2FA35 /* BasicShader.fsh in Resources */,
@@ -637,6 +646,7 @@
 				226AAB791C9C862800833AD5 /* b2PulleyJoint.cpp in Sources */,
 				226AAB6B1C9C862800833AD5 /* b2CircleContact.cpp in Sources */,
 				226AAB5C1C9C862800833AD5 /* b2PolygonShape.cpp in Sources */,
+				ACE4DEE91CA8AC4600BC7433 /* Overlay.mm in Sources */,
 				226AAB7E1C9C862800833AD5 /* b2Rope.cpp in Sources */,
 				ACE4DEE31C9F62C300BC7433 /* Brick.mm in Sources */,
 				22D10CF11C6EB147005E7F8C /* Program.m in Sources */,

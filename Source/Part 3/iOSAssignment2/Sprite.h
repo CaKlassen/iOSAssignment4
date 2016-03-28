@@ -12,6 +12,8 @@
 #import <OpenGLES/ES2/glext.h>
 #import "Entity.h"
 
+enum tag {BRICK, BALL, PADDLE};
+
 @interface Sprite : Entity
 {
 	GLuint _vertexArray;
@@ -23,9 +25,13 @@
 	float NumVertices;
 }
 
+@property (assign) enum tag TypeTag;
+
 -(id)initWithTextureFile:(const NSString *)fileName;
 
 -(void)setTexture;
+
+-(enum tag)getTag;
 
 @end
 

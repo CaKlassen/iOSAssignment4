@@ -27,15 +27,19 @@ static const NSString* FILE_NAME = @"Paddle.png";
 -(id)initWithPosition:(GLKVector3)position world:(b2World *)physicsWorld;
 {
 	self = [super initWithTextureFile:FILE_NAME];
-	
+    self.TypeTag = PADDLE;//tag
 	self.position = position;
 	world = physicsWorld;
 	
 	// Create physics object
 	bodyDef.type = b2_kinematicBody;
 	bodyDef.position.Set(position.x, position.y);
+    //bodyDef.userData = &self;
 	body = world->CreateBody(&bodyDef);
 	
+    //set user data
+    body->SetUserData((__bridge void*)self);
+    
 	// Create physics fixture
 	b2PolygonShape boundingShape;
 	boundingShape.SetAsBox(48, 16);
@@ -45,8 +49,15 @@ static const NSString* FILE_NAME = @"Paddle.png";
 	fixture.friction = 0.0f;
 	fixture.restitution = 1.0f;
 	body->CreateFixture(&fixture);
-	
+    
+    
 	return self;
+}
+
+
+-(void)removeFromBox2D
+{
+    world->DestroyBody(body);
 }
 
 -(void)update
@@ -55,7 +66,7 @@ static const NSString* FILE_NAME = @"Paddle.png";
 	self.position = GLKVector3Make(pos.x, pos.y, 0);
 	
 	// If we are outside the correct range, reverse x velocity
-	if (pos.x > 50 || pos.x < -50)
+	if (pos.x > 58 || pos.x < -60)
 	{
 		b2Vec2 spd = body->GetLinearVelocity();
 		[self updatePosition:GLKVector3Make(-spd.x, 0, 0)];

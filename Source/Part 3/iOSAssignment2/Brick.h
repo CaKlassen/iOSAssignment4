@@ -17,6 +17,7 @@
 
 -(id)initWithPosition:(GLKVector3)position world:(b2World*)world;
 -(void)updatePosition:(GLKVector3)position;
+-(void)removeFromBox2D;
 
 @property (assign) bool alive;
 

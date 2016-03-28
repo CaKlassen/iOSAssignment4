@@ -20,7 +20,7 @@
 
 @implementation Wall
 
--(id)initWithPosition:(GLKVector3)position world:(b2World *)physWorld;
+-(id)initWithPosition:(GLKVector3)position world:(b2World *)physWorld top:(bool)top;
 {
 	self = [super init];
 	
@@ -34,8 +34,13 @@
 	
 	// Create physics fixture
 	b2PolygonShape boundingShape;
-	boundingShape.SetAsBox(1, 600);
-	b2FixtureDef fixture;
+    
+    if(top)
+        boundingShape.SetAsBox(300, 1);
+    else
+        boundingShape.SetAsBox(1, 600);
+    
+    b2FixtureDef fixture;
 	fixture.shape = &boundingShape;
 	fixture.density = 1.0f;
 	fixture.friction = 0.0f;
@@ -44,6 +49,7 @@
 	
 	return self;
 }
+
 
 -(void)update
 {

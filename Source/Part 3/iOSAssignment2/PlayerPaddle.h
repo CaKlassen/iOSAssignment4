@@ -19,6 +19,8 @@
 
 -(void)updatePosition:(GLKVector3)position;
 
+-(void)removeFromBox2D;
+
 @end
 
 #endif /* PlayerPaddle_h */

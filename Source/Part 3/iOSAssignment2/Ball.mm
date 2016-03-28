@@ -27,7 +27,7 @@ static const int BALL_SPEED = -80;
 -(id)initWithPosition:(GLKVector3)position world:(b2World *)physicsWorld;
 {
 	self = [super initWithTextureFile:FILE_NAME];
-	
+    self.TypeTag = BALL;//tag
     _launched = false;
 	self.position = position;
 	world = physicsWorld;
@@ -36,8 +36,12 @@ static const int BALL_SPEED = -80;
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.position.Set(position.x, position.y);
 	bodyDef.linearDamping = 0.0f;
+    //bodyDef.userData = &self;
 	body = world->CreateBody(&bodyDef);
 	
+    //set user data
+    body->SetUserData((__bridge void*)self);
+    
 	// Create physics fixture
 	b2CircleShape boundingShape;
 	boundingShape.m_p.Set(0, 0);
@@ -48,7 +52,7 @@ static const int BALL_SPEED = -80;
 	fixture.friction = 0;
 	fixture.restitution = 1.0f;
 	body->CreateFixture(&fixture);
-	
+    
 
 	
 	return self;
@@ -61,8 +65,11 @@ static const int BALL_SPEED = -80;
     xComp *= 40;
     b2Vec2 *startImpulse = new b2Vec2(xComp, BALL_SPEED);
     body->SetLinearVelocity(*startImpulse);
-    
-    _launched = true;
+}
+
+-(void)removeFromBox2D
+{
+    world->DestroyBody(body);
 }
 
 -(void)update
@@ -70,7 +77,6 @@ static const int BALL_SPEED = -80;
 	b2Vec2 pos = body->GetPosition();
 	self.position = GLKVector3Make(pos.x, pos.y, 0);
 }
-
 
 -(void)updatePosition:(GLKVector3)speed
 {

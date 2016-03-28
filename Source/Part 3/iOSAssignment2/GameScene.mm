@@ -18,6 +18,7 @@
 #import "Ball.h"
 #import "Wall.h"
 #import "Brick.h"
+#import "Overlay.h"
 #import "MathUtils.h"
 
 #import <Box2D/Box2D.h>
@@ -32,7 +33,31 @@ const int NUM_POS_ITERATIONS = 3;
 class CustomContactListener : public b2ContactListener
 {
 public:
-	void BeginContact(b2Contact* contact) {};
+	void BeginContact(b2Contact* contact) {
+        //this is where we check what hit what
+        
+        void* bodyUserData = contact->GetFixtureA()->GetBody()->GetUserData();
+        
+        if(bodyUserData){
+            Sprite* a = (__bridge Sprite*)bodyUserData;
+            if(a.TypeTag == BRICK)
+            {
+                Brick* b = (Brick*)a;
+                b.alive = false;
+            }
+        }
+        
+        void* bodyUserDataB = contact->GetFixtureB()->GetBody()->GetUserData();
+        
+        if(bodyUserDataB){
+            Sprite* b = (__bridge Sprite*)bodyUserDataB;
+            if(b.TypeTag == BRICK)
+            {
+                Brick* br = (Brick*)b;
+                br.alive = false;
+            }
+        }
+    };
 	
 	void EndContact(b2Contact* contact) {};
 	
@@ -69,10 +94,14 @@ public:
 	Ball *ball;
 	Wall *wallLeft;
 	Wall *wallRight;
+    Wall *wallTop;
     NSMutableArray *bricks;
+    Overlay *ggOverlay;
 	
 	b2World *world;
 	CustomContactListener *contactListener;
+    
+    bool gameover;
 }
 
 @end
@@ -89,6 +118,8 @@ static const int BRICK_H = 22;
 {
 	self = [super init];
 	
+    gameover = false;
+    
 	basicProgram = [[BasicProgram alloc] init];
 	spriteProgram = [[SpriteProgram alloc] init];
 	
@@ -96,19 +127,22 @@ static const int BRICK_H = 22;
 	
 	// Create the Box2D world
 	b2Vec2 *gravity = new b2Vec2(0.0, 0.0f);
-	world = new b2World(*gravity);
+    world = new b2World(*gravity);
 	contactListener = new CustomContactListener();
 	world->SetContactListener(contactListener);
 	
 	// Create the game objects
-	wallLeft = [[Wall alloc] initWithPosition:GLKVector3Make(-WALL_OFF, 0, 0) world:world];
-	wallRight = [[Wall alloc] initWithPosition:GLKVector3Make(WALL_OFF, 0, 0) world:world];
+    wallLeft = [[Wall alloc] initWithPosition:GLKVector3Make(-WALL_OFF, 0, 0) world:world top:false];
+	wallRight = [[Wall alloc] initWithPosition:GLKVector3Make(WALL_OFF, 0, 0) world:world top:false];
+    wallTop = [[Wall alloc] initWithPosition:GLKVector3Make(0, 200, 0) world:world top:true];
 	
 	playerPaddle = [[PlayerPaddle alloc] initWithPosition:GLKVector3Make(0, -PADDLE_OFF, 0) world:world];
-	//enemyPaddle = [[EnemyPaddle alloc] initWithPosition:GLKVector3Make(0, PADDLE_OFF, 0) world:world];
+	//enemyPaddle = [[EnemyPaddle alloc] initWithPosition:GLKVector3Make(0, PADDLE_OFF, 0) world:world];    +34
 	ball = [[Ball alloc] initWithPosition:GLKVector3Make(0, -PADDLE_OFF + 34, 0) world:world];
     [self setupBricks];
 	
+    ggOverlay = [[Overlay alloc] initWithPosition:GLKVector3Make(0, 0, -150) world:world];
+    
 	return self;
 }
 
@@ -128,6 +162,50 @@ static const int BRICK_H = 22;
 	[playerPaddle update];
 	//[enemyPaddle update];
 	[ball update];
+
+    
+    for (NSInteger i = bricks.count - 1; i >= 0; i--)
+    {
+        [[bricks objectAtIndex:i] update];
+        if(![[bricks objectAtIndex:i]alive])
+        {
+            [bricks removeObjectAtIndex:i];
+        }
+    }
+    
+    if(ball.position.y < playerPaddle.position.y - 40)
+    {
+        //game over
+        [self GameOver];
+        [playerPaddle updatePosition:GLKVector3Make(0, 0, 0)];
+        [ball updatePosition:GLKVector3Make(0, 0, 0)];
+    }
+}
+
+-(void)GameOver
+{
+    gameover = true;
+    
+}
+
+
+-(void)reset
+{
+    for (NSInteger i = bricks.count - 1; i >= 0; i--)
+    {
+        [[bricks objectAtIndex:i] removeFromBox2D];
+        [bricks removeObjectAtIndex:i];
+    }
+    
+    [self setupBricks];
+    
+    [playerPaddle removeFromBox2D];
+    playerPaddle = [[PlayerPaddle alloc] initWithPosition:GLKVector3Make(0, -PADDLE_OFF, 0) world:world];
+    
+    [ball removeFromBox2D];
+    ball = [[Ball alloc] initWithPosition:GLKVector3Make(0, -PADDLE_OFF + 34, 0) world:world];
+    
+    gameover = false;
 }
 
 -(void)draw
@@ -145,6 +223,9 @@ static const int BRICK_H = 22;
     {
         [b draw:spriteProgram camera:camera];
     }
+    
+    if(gameover)
+        [ggOverlay draw:spriteProgram camera:camera];
 }
 
 
@@ -168,7 +249,7 @@ static const int BRICK_H = 22;
 			// Only move if we are inside the correct range
 			float playerX = [playerPaddle position].x;
 			
-			if (playerX <= 50 && playerX >= -50)
+			if (playerX <= 58 && playerX >= -60)
 				[playerPaddle updatePosition:GLKVector3Make(dis.x, 0, 0)];
 		}
 	}
@@ -176,9 +257,16 @@ static const int BRICK_H = 22;
 
 -(void)tap:(UITapGestureRecognizer *)recognizer
 {
-    if(![ball launched])
+    if(!gameover)
     {
-        [ball launchBall];
+        if(![ball launched])
+        {
+            [ball launchBall];
+        }
+    }else
+    {
+        //reset
+        [self reset];
     }
 }
 

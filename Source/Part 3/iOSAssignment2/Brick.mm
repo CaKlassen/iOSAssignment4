@@ -22,10 +22,11 @@
 
 static const NSString* FILE_NAME = @"Brick.png";
 
+
 -(id)initWithPosition:(GLKVector3)position world:(b2World *)PhysicsWorld;
 {
     self = [super initWithTextureFile:@"Brick.png"];
-    
+    self.TypeTag = BRICK;//assign tag
     self.alive = true;
     
     self.position = position;
@@ -36,6 +37,9 @@ static const NSString* FILE_NAME = @"Brick.png";
     bodyDef.position.Set(position.x, position.y);
     body = world->CreateBody(&bodyDef);
     
+    //set user data
+    body->SetUserData((__bridge void*)self);
+    
     //create physics fixture
     b2PolygonShape boundingShape;
     boundingShape.SetAsBox(34, 11);
@@ -45,6 +49,7 @@ static const NSString* FILE_NAME = @"Brick.png";
     fixture.friction = 0.0f;
     fixture.restitution = 1.0f;
     body->CreateFixture(&fixture);
+   
     
     return self;
 }
@@ -52,8 +57,17 @@ static const NSString* FILE_NAME = @"Brick.png";
 -(void)update
 {
     //if hit then set alive to false
-    
+    if(self.alive == false)
+    {
+        world->DestroyBody(body);
+    }
 }
+
+-(void)removeFromBox2D
+{
+    world->DestroyBody(body);
+}
+
 
 -(void)draw:(Program *)program camera:(Camera *)camera
 {

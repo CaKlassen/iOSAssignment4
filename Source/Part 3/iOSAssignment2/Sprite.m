@@ -35,6 +35,7 @@ const float QuadTexels [] =
 
 @property (strong) GLKTextureInfo *textureInfo;
 @property (assign) GLuint texName;
+@property (assign) bool isBrick;
 
 @end
 
