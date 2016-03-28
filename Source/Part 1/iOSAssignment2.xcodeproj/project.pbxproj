@@ -11,12 +11,12 @@
 		22372DDF1C77E7770058FF72 /* Sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 22372DDE1C77E7770058FF72 /* Sprite.m */; };
 		22372DE51C77EB470058FF72 /* SpriteProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 22372DE41C77EB470058FF72 /* SpriteProgram.m */; };
 		22372DE71C77EB920058FF72 /* SpriteShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 22372DE61C77EB920058FF72 /* SpriteShader.fsh */; };
-		2248A7201C9E02B300CE520A /* libBulletCollision_xcode4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2248A7131C9E020E00CE520A /* libBulletCollision_xcode4.a */; };
-		2248A7211C9E02B300CE520A /* libBulletDynamics_xcode4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2248A7161C9E020E00CE520A /* libBulletDynamics_xcode4.a */; };
-		2248A7221C9E02B300CE520A /* libLinearMath_xcode4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2248A7191C9E020E00CE520A /* libLinearMath_xcode4.a */; };
+		2239E9661CA84CA40064411A /* libBulletCollision_xcode4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2239E9591CA84C3A0064411A /* libBulletCollision_xcode4.a */; };
+		2239E9671CA84CA40064411A /* libBulletDynamics_xcode4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2239E95C1CA84C3A0064411A /* libBulletDynamics_xcode4.a */; };
+		2239E9681CA84CA40064411A /* libLinearMath_xcode4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2239E95F1CA84C3A0064411A /* libLinearMath_xcode4.a */; };
 		226AAB811C9C9EA500833AD5 /* Ball.mm in Sources */ = {isa = PBXBuildFile; fileRef = 226AAB801C9C9EA500833AD5 /* Ball.mm */; };
 		226AAB831C9C9F2E00833AD5 /* Ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 226AAB821C9C9F2E00833AD5 /* Ball.png */; };
-		226CC78D1C9BB60000B15A12 /* PlayerPaddle.mm in Sources */ = {isa = PBXBuildFile; fileRef = 226CC78C1C9BB60000B15A12 /* PlayerPaddle.mm */; };
+		226CC78D1C9BB60000B15A12 /* Ground.mm in Sources */ = {isa = PBXBuildFile; fileRef = 226CC78C1C9BB60000B15A12 /* Ground.mm */; };
 		226CC78F1C9BB75E00B15A12 /* Paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 226CC78E1C9BB75E00B15A12 /* Paddle.png */; };
 		226CC7921C9BB81300B15A12 /* TextureLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 226CC7911C9BB81300B15A12 /* TextureLoader.m */; };
 		22B0EED01C6C33BC00B2FA35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B0EECF1C6C33BC00B2FA35 /* main.m */; };
@@ -35,50 +35,52 @@
 		22D10D1B1C6EB6DC005E7F8C /* BasicProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D10D1A1C6EB6DC005E7F8C /* BasicProgram.m */; };
 		22D10D251C6EDABC005E7F8C /* Vector.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D10D241C6EDABC005E7F8C /* Vector.m */; };
 		22D10D281C6EE2E1005E7F8C /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D10D271C6EE2E1005E7F8C /* Camera.m */; };
+		22EC40721CA8571400A8A482 /* Box.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22EC40711CA8571400A8A482 /* Box.mm */; };
+		22EC40741CA857BA00A8A482 /* BoxEdge.png in Resources */ = {isa = PBXBuildFile; fileRef = 22EC40731CA857BA00A8A482 /* BoxEdge.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2248A7121C9E020E00CE520A /* PBXContainerItemProxy */ = {
+		2239E9581CA84C3A0064411A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2248A7081C9E020E00CE520A /* BulletCollision.xcodeproj */;
+			containerPortal = 2239E94E1CA84C3A0064411A /* BulletCollision.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 00F910446A7A0F0B35354C36;
 			remoteInfo = BulletCollision;
 		};
-		2248A7151C9E020E00CE520A /* PBXContainerItemProxy */ = {
+		2239E95B1CA84C3A0064411A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2248A70B1C9E020E00CE520A /* BulletDynamics.xcodeproj */;
+			containerPortal = 2239E9511CA84C3A0064411A /* BulletDynamics.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 6F2F2EFF051123D7327667AF;
 			remoteInfo = BulletDynamics;
 		};
-		2248A7181C9E020E00CE520A /* PBXContainerItemProxy */ = {
+		2239E95E1CA84C3A0064411A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2248A70E1C9E020E00CE520A /* LinearMath.xcodeproj */;
+			containerPortal = 2239E9541CA84C3A0064411A /* LinearMath.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 66C4782A307D15BD5BC427CF;
 			remoteInfo = LinearMath;
 		};
-		2248A71A1C9E029C00CE520A /* PBXContainerItemProxy */ = {
+		2239E9601CA84C9F0064411A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2248A70B1C9E020E00CE520A /* BulletDynamics.xcodeproj */;
+			containerPortal = 2239E94E1CA84C3A0064411A /* BulletCollision.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 24E07B260B712DB612302E45;
+			remoteInfo = BulletCollision;
+		};
+		2239E9621CA84C9F0064411A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2239E9511CA84C3A0064411A /* BulletDynamics.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 48DB39D76B7151993E94175B;
 			remoteInfo = BulletDynamics;
 		};
-		2248A71C1C9E029C00CE520A /* PBXContainerItemProxy */ = {
+		2239E9641CA84C9F0064411A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2248A70E1C9E020E00CE520A /* LinearMath.xcodeproj */;
+			containerPortal = 2239E9541CA84C3A0064411A /* LinearMath.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 36655114319F56045B036258;
 			remoteInfo = LinearMath;
-		};
-		2248A71E1C9E02A100CE520A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2248A7081C9E020E00CE520A /* BulletCollision.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 24E07B260B712DB612302E45;
-			remoteInfo = BulletCollision;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -90,14 +92,14 @@
 		22372DE31C77EB310058FF72 /* SpriteProgram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpriteProgram.h; sourceTree = "<group>"; };
 		22372DE41C77EB470058FF72 /* SpriteProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteProgram.m; sourceTree = "<group>"; };
 		22372DE61C77EB920058FF72 /* SpriteShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SpriteShader.fsh; sourceTree = "<group>"; };
-		2248A7081C9E020E00CE520A /* BulletCollision.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BulletCollision.xcodeproj; path = "iOSAssignment2/bullet-2.82-r2704/build/xcode4ios/BulletCollision.xcodeproj"; sourceTree = "<group>"; };
-		2248A70B1C9E020E00CE520A /* BulletDynamics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BulletDynamics.xcodeproj; path = "iOSAssignment2/bullet-2.82-r2704/build/xcode4ios/BulletDynamics.xcodeproj"; sourceTree = "<group>"; };
-		2248A70E1C9E020E00CE520A /* LinearMath.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LinearMath.xcodeproj; path = "iOSAssignment2/bullet-2.82-r2704/build/xcode4ios/LinearMath.xcodeproj"; sourceTree = "<group>"; };
+		2239E94E1CA84C3A0064411A /* BulletCollision.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BulletCollision.xcodeproj; path = "iOSAssignment2/bullet-2.82-r2704/build/xcode4ios/BulletCollision.xcodeproj"; sourceTree = "<group>"; };
+		2239E9511CA84C3A0064411A /* BulletDynamics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BulletDynamics.xcodeproj; path = "iOSAssignment2/bullet-2.82-r2704/build/xcode4ios/BulletDynamics.xcodeproj"; sourceTree = "<group>"; };
+		2239E9541CA84C3A0064411A /* LinearMath.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LinearMath.xcodeproj; path = "iOSAssignment2/bullet-2.82-r2704/build/xcode4ios/LinearMath.xcodeproj"; sourceTree = "<group>"; };
 		226AAB7F1C9C9E8F00833AD5 /* Ball.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
 		226AAB801C9C9EA500833AD5 /* Ball.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ball.mm; sourceTree = "<group>"; };
 		226AAB821C9C9F2E00833AD5 /* Ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ball.png; sourceTree = "<group>"; };
 		226CC78B1C9BB54900B15A12 /* Ground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ground.h; sourceTree = "<group>"; };
-		226CC78C1C9BB60000B15A12 /* PlayerPaddle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerPaddle.mm; sourceTree = "<group>"; };
+		226CC78C1C9BB60000B15A12 /* Ground.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ground.mm; sourceTree = "<group>"; };
 		226CC78E1C9BB75E00B15A12 /* Paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Paddle.png; sourceTree = "<group>"; };
 		226CC7901C9BB81300B15A12 /* TextureLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureLoader.h; sourceTree = "<group>"; };
 		226CC7911C9BB81300B15A12 /* TextureLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureLoader.m; sourceTree = "<group>"; };
@@ -129,6 +131,9 @@
 		22D10D241C6EDABC005E7F8C /* Vector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector.m; sourceTree = "<group>"; };
 		22D10D261C6EE141005E7F8C /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		22D10D271C6EE2E1005E7F8C /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
+		22EC40701CA8571400A8A482 /* Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box.h; sourceTree = "<group>"; };
+		22EC40711CA8571400A8A482 /* Box.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Box.mm; sourceTree = "<group>"; };
+		22EC40731CA857BA00A8A482 /* BoxEdge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BoxEdge.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,35 +141,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2248A7201C9E02B300CE520A /* libBulletCollision_xcode4.a in Frameworks */,
-				2248A7211C9E02B300CE520A /* libBulletDynamics_xcode4.a in Frameworks */,
-				2248A7221C9E02B300CE520A /* libLinearMath_xcode4.a in Frameworks */,
+				2239E9661CA84CA40064411A /* libBulletCollision_xcode4.a in Frameworks */,
+				2239E9671CA84CA40064411A /* libBulletDynamics_xcode4.a in Frameworks */,
+				2239E9681CA84CA40064411A /* libLinearMath_xcode4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2248A7091C9E020E00CE520A /* Products */ = {
+		2239E94F1CA84C3A0064411A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2248A7131C9E020E00CE520A /* libBulletCollision_xcode4.a */,
+				2239E9591CA84C3A0064411A /* libBulletCollision_xcode4.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2248A70C1C9E020E00CE520A /* Products */ = {
+		2239E9521CA84C3A0064411A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2248A7161C9E020E00CE520A /* libBulletDynamics_xcode4.a */,
+				2239E95C1CA84C3A0064411A /* libBulletDynamics_xcode4.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2248A70F1C9E020E00CE520A /* Products */ = {
+		2239E9551CA84C3A0064411A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2248A7191C9E020E00CE520A /* libLinearMath_xcode4.a */,
+				2239E95F1CA84C3A0064411A /* libLinearMath_xcode4.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,9 +177,9 @@
 		22B0EEC21C6C33BC00B2FA35 = {
 			isa = PBXGroup;
 			children = (
-				2248A7081C9E020E00CE520A /* BulletCollision.xcodeproj */,
-				2248A70B1C9E020E00CE520A /* BulletDynamics.xcodeproj */,
-				2248A70E1C9E020E00CE520A /* LinearMath.xcodeproj */,
+				2239E94E1CA84C3A0064411A /* BulletCollision.xcodeproj */,
+				2239E9511CA84C3A0064411A /* BulletDynamics.xcodeproj */,
+				2239E9541CA84C3A0064411A /* LinearMath.xcodeproj */,
 				22B0EECD1C6C33BC00B2FA35 /* iOSAssignment2 */,
 				22B0EECC1C6C33BC00B2FA35 /* Products */,
 			);
@@ -235,9 +240,11 @@
 				22372DDD1C77E7410058FF72 /* Sprite.h */,
 				22372DDE1C77E7770058FF72 /* Sprite.m */,
 				226CC78B1C9BB54900B15A12 /* Ground.h */,
-				226CC78C1C9BB60000B15A12 /* PlayerPaddle.mm */,
+				226CC78C1C9BB60000B15A12 /* Ground.mm */,
 				226AAB7F1C9C9E8F00833AD5 /* Ball.h */,
 				226AAB801C9C9EA500833AD5 /* Ball.mm */,
+				22EC40701CA8571400A8A482 /* Box.h */,
+				22EC40711CA8571400A8A482 /* Box.mm */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -281,6 +288,7 @@
 			children = (
 				226CC78E1C9BB75E00B15A12 /* Paddle.png */,
 				226AAB821C9C9F2E00833AD5 /* Ball.png */,
+				22EC40731CA857BA00A8A482 /* BoxEdge.png */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -299,9 +307,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				2248A71F1C9E02A100CE520A /* PBXTargetDependency */,
-				2248A71B1C9E029C00CE520A /* PBXTargetDependency */,
-				2248A71D1C9E029C00CE520A /* PBXTargetDependency */,
+				2239E9611CA84C9F0064411A /* PBXTargetDependency */,
+				2239E9631CA84C9F0064411A /* PBXTargetDependency */,
+				2239E9651CA84C9F0064411A /* PBXTargetDependency */,
 			);
 			name = iOSAssignment2;
 			productName = iOSAssignment2;
@@ -336,16 +344,16 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 2248A7091C9E020E00CE520A /* Products */;
-					ProjectRef = 2248A7081C9E020E00CE520A /* BulletCollision.xcodeproj */;
+					ProductGroup = 2239E94F1CA84C3A0064411A /* Products */;
+					ProjectRef = 2239E94E1CA84C3A0064411A /* BulletCollision.xcodeproj */;
 				},
 				{
-					ProductGroup = 2248A70C1C9E020E00CE520A /* Products */;
-					ProjectRef = 2248A70B1C9E020E00CE520A /* BulletDynamics.xcodeproj */;
+					ProductGroup = 2239E9521CA84C3A0064411A /* Products */;
+					ProjectRef = 2239E9511CA84C3A0064411A /* BulletDynamics.xcodeproj */;
 				},
 				{
-					ProductGroup = 2248A70F1C9E020E00CE520A /* Products */;
-					ProjectRef = 2248A70E1C9E020E00CE520A /* LinearMath.xcodeproj */;
+					ProductGroup = 2239E9551CA84C3A0064411A /* Products */;
+					ProjectRef = 2239E9541CA84C3A0064411A /* LinearMath.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -356,25 +364,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2248A7131C9E020E00CE520A /* libBulletCollision_xcode4.a */ = {
+		2239E9591CA84C3A0064411A /* libBulletCollision_xcode4.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libBulletCollision_xcode4.a;
-			remoteRef = 2248A7121C9E020E00CE520A /* PBXContainerItemProxy */;
+			remoteRef = 2239E9581CA84C3A0064411A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2248A7161C9E020E00CE520A /* libBulletDynamics_xcode4.a */ = {
+		2239E95C1CA84C3A0064411A /* libBulletDynamics_xcode4.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libBulletDynamics_xcode4.a;
-			remoteRef = 2248A7151C9E020E00CE520A /* PBXContainerItemProxy */;
+			remoteRef = 2239E95B1CA84C3A0064411A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2248A7191C9E020E00CE520A /* libLinearMath_xcode4.a */ = {
+		2239E95F1CA84C3A0064411A /* libLinearMath_xcode4.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libLinearMath_xcode4.a;
-			remoteRef = 2248A7181C9E020E00CE520A /* PBXContainerItemProxy */;
+			remoteRef = 2239E95E1CA84C3A0064411A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -392,6 +400,7 @@
 				22372DE71C77EB920058FF72 /* SpriteShader.fsh in Resources */,
 				226AAB831C9C9F2E00833AD5 /* Ball.png in Resources */,
 				22B0EED51C6C33BC00B2FA35 /* BasicShader.fsh in Resources */,
+				22EC40741CA857BA00A8A482 /* BoxEdge.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,8 +422,9 @@
 				22372DDF1C77E7770058FF72 /* Sprite.m in Sources */,
 				22D10CF11C6EB147005E7F8C /* Program.m in Sources */,
 				22372DE51C77EB470058FF72 /* SpriteProgram.m in Sources */,
+				22EC40721CA8571400A8A482 /* Box.mm in Sources */,
 				22270DBE1C8CC09200960454 /* MathUtils.m in Sources */,
-				226CC78D1C9BB60000B15A12 /* PlayerPaddle.mm in Sources */,
+				226CC78D1C9BB60000B15A12 /* Ground.mm in Sources */,
 				22D10CED1C6EACF3005E7F8C /* Model.m in Sources */,
 				22D10D1B1C6EB6DC005E7F8C /* BasicProgram.m in Sources */,
 				22D10CE51C6EA506005E7F8C /* GameScene.mm in Sources */,
@@ -425,20 +435,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2248A71B1C9E029C00CE520A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BulletDynamics;
-			targetProxy = 2248A71A1C9E029C00CE520A /* PBXContainerItemProxy */;
-		};
-		2248A71D1C9E029C00CE520A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LinearMath;
-			targetProxy = 2248A71C1C9E029C00CE520A /* PBXContainerItemProxy */;
-		};
-		2248A71F1C9E02A100CE520A /* PBXTargetDependency */ = {
+		2239E9611CA84C9F0064411A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BulletCollision;
-			targetProxy = 2248A71E1C9E02A100CE520A /* PBXContainerItemProxy */;
+			targetProxy = 2239E9601CA84C9F0064411A /* PBXContainerItemProxy */;
+		};
+		2239E9631CA84C9F0064411A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BulletDynamics;
+			targetProxy = 2239E9621CA84C9F0064411A /* PBXContainerItemProxy */;
+		};
+		2239E9651CA84C9F0064411A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LinearMath;
+			targetProxy = 2239E9641CA84C9F0064411A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -498,12 +508,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/iOSAssignment2";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/iOSAssignment2/bullet-2.82-r2704/src";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/bullet-2.82-rev2704/src";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/iOSAssignment2/bullet-2.82-r2704/src";
 			};
 			name = Debug;
 		};
@@ -537,11 +547,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/iOSAssignment2";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/iOSAssignment2/bullet-2.82-r2704/src";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/bullet-2.82-rev2704/src";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/iOSAssignment2/bullet-2.82-r2704/src";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -556,7 +566,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.klassen.iOSAssignment2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/iOSAssignment2/bullet-2.82-r2704/src";
+				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/bullet-2.82-r2704/src";
 			};
 			name = Debug;
 		};
@@ -570,7 +580,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.klassen.iOSAssignment2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/iOSAssignment2/bullet-2.82-r2704/src";
+				USER_HEADER_SEARCH_PATHS = "${PROJECT_DIR}/bullet-2.82-r2704/src";
 			};
 			name = Release;
 		};

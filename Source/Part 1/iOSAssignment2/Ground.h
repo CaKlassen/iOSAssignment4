@@ -18,6 +18,7 @@
 -(id)initWithPosition:(GLKVector3)position world:(btDiscreteDynamicsWorld*)world;
 
 -(void)updatePosition:(GLKVector3)position;
+-(void)rotate:(float)rot;
 
 @end
 
