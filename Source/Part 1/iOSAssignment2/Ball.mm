@@ -67,6 +67,7 @@ static const int OUTSIDE_OFF = 240;
 -(void)wake
 {
 	rigidBody->setGravity(btVector3(0, -100, 0));
+    rigidBody->activate();
 }
 
 -(void)updatePosition:(GLKVector3)speed

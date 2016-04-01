@@ -127,6 +127,7 @@ static const int WALL_OFF = 115;
 
 -(void)doubleTap:(UITapGestureRecognizer*)recognizer
 {
+    dynamicsWorld->setGravity(btVector3(0,-10,0));
 	[ball wake];
 }
 
